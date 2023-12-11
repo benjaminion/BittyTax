@@ -586,7 +586,7 @@ class TaxEventCapitalGains(TaxEvent):
             raise RuntimeError("Missing proceeds")
 
         self.disposal_type = disposal_type
-        self.quantity = s.quantity
+        self.quantity = s.quantity.quantize(Decimal("0.000000"))
         self.cost = cost.quantize(PRECISION)
         self.fees = fees.quantize(PRECISION)
         self.proceeds = s.proceeds.quantize(PRECISION)
@@ -620,7 +620,7 @@ class TaxEventIncome(TaxEvent):  # pylint: disable=too-few-public-methods
             raise RuntimeError("Missing cost")
 
         self.type = b.t_type
-        self.quantity = b.quantity
+        self.quantity = b.quantity.quantize(Decimal("0.000000"))
         self.amount = b.cost.quantize(PRECISION)
         self.note = b.wallet
         if b.fee_value:
