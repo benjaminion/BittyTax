@@ -444,9 +444,10 @@ class CryptoCompare(DataSourceBase):
         timestamp: Timestamp,
         _asset_id: AssetId = AssetId(""),
     ) -> None:
+        assetSym = 'ETH' if asset == 'WETH' else asset
         url = (
             f"https://min-api.cryptocompare.com/data/histoday?aggregate=1"
-            f"&extraParams={self.USER_AGENT}&fsym={asset}&tsym={quote}"
+            f"&extraParams={self.USER_AGENT}&fsym={assetSym}&tsym={quote}"
             f"&limit={self.MAX_DAYS}"
             f"&toTs={self.epoch_time(Timestamp(timestamp + timedelta(days=self.MAX_DAYS)))}"
         )
