@@ -171,7 +171,8 @@ class AuditRecords:
         if self.wallets[wallet][sell.asset].balance < 0 and sell.is_crypto():
             bt_tqdm_write(
                 f"{WARNING} Balance at {wallet}:{sell.asset} "
-                f"is negative {self.wallets[wallet][sell.asset].balance.normalize():0,f}"
+                f"is negative {self.wallets[wallet][sell.asset].balance.normalize():0,f} "
+                f"when subtracting {sell.quantity}"
             )
 
         if sell.t_type is TrType.STAKE:
