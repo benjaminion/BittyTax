@@ -72,7 +72,7 @@ class TaxEventIncome(TaxEvent):  # pylint: disable=too-few-public-methods
         self.type = b.t_type
         self.quantity = b.quantity
         self.amount = b.cost.quantize(PRECISION)
-        self.note = b.note
+        self.note = b.wallet
         if b.fee_value:
             self.fees = b.fee_value.quantize(PRECISION)
         else:
